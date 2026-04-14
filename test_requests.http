@@ -1,0 +1,110 @@
+### 1. create
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <tel:CreateRequest>
+      <tel:Service>
+        <tel:ServiceId>002</tel:ServiceId>
+        <tel:ServiceType>MobileDataService</tel:ServiceType>
+        <tel:CustomerId>12356789</tel:CustomerId>
+        <tel:SubscriptionId>987654321</tel:SubscriptionId>
+        <tel:ServiceDetails>
+          <tel:PlanType>5G</tel:PlanType>
+          <tel:DataLimit></tel:DataLimit>
+          <tel:RoamingEnabled>true</tel:RoamingEnabled>
+        </tel:ServiceDetails>
+        <tel:CustomerDetails>
+          <tel:Name>John Doe</tel:Name>
+          <tel:Address>
+            <tel:Country>Lithuania</tel:Country>
+          </tel:Address>
+          <tel:ContactNumber>+37060012345</tel:ContactNumber>
+        </tel:CustomerDetails>
+      </tel:Service>
+    </tel:CreateRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+### 2. get
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Body>
+    <tel:GetServiceRequest>
+      <tel:ServiceId>002</tel:ServiceId>
+    </tel:GetServiceRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+### 3. update
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Body>
+    <tel:UpdateRequest>
+      <tel:Service>
+        <tel:ServiceId>001</tel:ServiceId>
+        <tel:ServiceType>MobileDataService</tel:ServiceType>
+        <tel:CustomerId>123456789</tel:CustomerId>
+        <tel:SubscriptionId>987654321</tel:SubscriptionId>
+        <tel:ServiceDetails>
+          <tel:PlanType>5G</tel:PlanType>
+          <tel:DataLimit>Unlimited</tel:DataLimit>
+          <tel:RoamingEnabled>true</tel:RoamingEnabled>
+        </tel:ServiceDetails>
+        <tel:CustomerDetails>
+          <tel:Name>Jane Doe</tel:Name>
+          <tel:Address>
+            <tel:Country>Sweden</tel:Country>
+          </tel:Address>
+          <tel:ContactNumber>+37060012345</tel:ContactNumber>
+        </tel:CustomerDetails>
+      </tel:Service>
+    </tel:UpdateRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+### 4. get all
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Body>
+    <tel:GetAllServicesRequest/>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+### 5. delete
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Body>
+    <tel:DeleteServiceRequest>
+      <tel:ServiceId>001</tel:ServiceId>
+    </tel:DeleteServiceRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+### 6. error wrong format
+POST http://localhost:8080/ws
+Content-Type: text/xml;charset=UTF-8
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tel="test">
+  <soapenv:Body>
+    <tel:CreateRequest>
+      <tel:Service>
+        <tel:ServiceId>002</tel:ServiceId>
+        <tel:CustomerDetails>
+          <tel:Name>Validation Test</tel:Name>
+          <tel:ContactNumber>860012345</tel:ContactNumber>
+        </tel:CustomerDetails>
+      </tel:Service>
+    </tel:CreateRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
