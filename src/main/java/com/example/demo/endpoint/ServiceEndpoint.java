@@ -4,7 +4,6 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import jakarta.xml.bind.JAXBElement;
 
 import com.example.demo.repository.ServiceRepository;
 
